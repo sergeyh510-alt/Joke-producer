@@ -13,7 +13,7 @@ import org.springframework.kafka.support.serializer.JacksonJsonSerializer; // И
 //import org.springframework.kafka.support.serializer.JacksonJsonSerializer; // Новый сериализатор
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Map; // Добавляем для использования
 
 @Configuration
 public class KafkaConfig {
