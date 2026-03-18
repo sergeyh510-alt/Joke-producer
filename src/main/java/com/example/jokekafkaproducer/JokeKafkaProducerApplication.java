@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class JokeKafkaProducerApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(JokeKafkaProducerApplication.class, args);
     }
 }
