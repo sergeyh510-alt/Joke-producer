@@ -1,14 +1,24 @@
-# Joke Kafka Producer
+## 🃏 Kafka Producer Service with API Integration
 
-[![🇬🇧 English](https://img.shields.io/badge/🇬🇧_English-README-blue?style=for-the-badge&logo=markdown&logoColor=white)](./README.md)
-[![🇷🇺 Русский](https://img.shields.io/badge/🇷🇺_Русский-README-red?style=for-the-badge&logo=markdown&logoColor=white)](./README.ru.md)
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://adoptium.net/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)](https://kafka.apache.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0-blue.svg?style=for-the-badge)](https://github.com/yourname/joke-kafka-producer)
+[![Java](https://img.shields.io/badge/Java-19.0.2+-orange.svg?style=for-the-badge)](https://adoptium.net/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.3-brightgreen.svg?style=for-the-badge)](https://spring.io/projects/spring-boot)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen.svg?style=for-the-badge)](https://github.com/yourname/joke-kafka-producer)
 
-https://img.shields.io/badge/Java-19-orange.svg
-https://img.shields.io/badge/Spring%2520Boot-4.0.3-brightgreen.svg
-https://img.shields.io/badge/Apache%2520Kafka-3.x-blue.svg
+**Сервис-продюсер для автоматического получения случайных шуток из внешнего API и их отправки в Apache Kafka с подтверждением доставки.**  
+`Java` · `Spring Boot` · `Kafka` · `WebFlux` · `Reactor`
 
-Сервис-продюсер для автоматического получения шуток из внешнего API и отправки их в Apache Kafka.
-
+|Ключевая особенность|	Описание|
+|----------------------------|-------------------------------|
+|⚡ Reactive	|Асинхронная обработка на Spring WebFlux + Reactor
+|🎯 Атомарность	|Получение шутки → Отправка в Kafka за один цикл
+|🔁 Автоматизация	|Планировщик для периодической отправки (каждые 10 сек)
+|📊 Диагностика|	Полный набор эндпоинтов для мониторинга
+|✅ Подтверждение	|acks=all — гарантия доставки на все реплики
 ## 📋 Оглавление
 
   *  [Описание](#Описание)
