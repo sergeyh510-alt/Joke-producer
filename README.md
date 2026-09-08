@@ -9,99 +9,84 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.3-brightgreen.svg?style=for-the-badge)](https://spring.io/projects/spring-boot)
 [![Status](https://img.shields.io/badge/status-stable-brightgreen.svg?style=for-the-badge)](https://github.com/yourname/joke-kafka-producer)
 
-**Сервис-продюсер для автоматического получения случайных шуток из внешнего API и их отправки в Apache Kafka с подтверждением доставки.**  
+**A producer service that automatically fetches random jokes from an external API and sends them to Apache Kafka with delivery confirmation.**  
 `Java` · `Spring Boot` · `Kafka` · `WebFlux` · `Reactor`
 
-|Ключевая особенность|	Описание|
-|----------------------------|-------------------------------|
-|⚡ Reactive	|Асинхронная обработка на Spring WebFlux + Reactor
-|🎯 Атомарность	|Получение шутки → Отправка в Kafka за один цикл
-|🔁 Автоматизация	|Планировщик для периодической отправки (каждые 10 сек)
-|📊 Диагностика|	Полный набор эндпоинтов для мониторинга
-|✅ Подтверждение	|acks=all — гарантия доставки на все реплики
-## 📋 Оглавление
+| Key Feature | Description |
+|-------------|-------------|
+| ⚡ Reactive | Asynchronous processing with Spring WebFlux + Reactor |
+| 🎯 Atomicity | Fetch joke → Send to Kafka in a single cycle |
+| 🔁 Automation | Scheduler for periodic sending (every 10 seconds) |
+| 📊 Diagnostics | Full set of endpoints for monitoring |
+| ✅ Acknowledgment | `acks=all` — guaranteed delivery to all replicas |
 
-  *  [Описание](#Описание)
+## 📋 Table of Contents
 
-  *  [Архитектура](#Архитектура)
+- [Description](#description)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Requirements](#requirements)
+- [Installation & Running](#installation--running)
+- [Configuration](#configuration)
+- [API Endpoints](#api-endpoints)
+- [Monitoring & Diagnostics](#monitoring--diagnostics)
+- [Project Structure](#project-structure)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Contacts](#contacts)
 
-  *  [Стек технологий](#Стек-технологий)
+## 🎯 Description
 
-  *  [Требования](#Требования)
+### Joke Kafka Producer is a Spring Boot application that:
 
-  *  [Установка и запуск](#Установка-и-запуск)
+- Fetches random jokes from the public [official-joke-api](https://official-joke-api.appspot.com/)
+- Sends them to the Kafka topic `jokes-topic` with delivery acknowledgment (`acks=all`)
+- Operates in two modes:
+  - **Manual** — via REST request
+  - **Automatic** — via scheduler (every 10 seconds)
 
-  *  [Конфигурация](#Конфигурация)
+## 🏗 Architecture
 
-  *  [API Endpoints](#API-Endpoints)
-
-  *  [Мониторинг и диагностика](#Мониторинг-и-диагностика)
-
-  *  [Структура проекта](#Структура-проекта)
-
-  *  [Планы по развитию](#Планы-по-развитию)
-  *  [Лицензия](#Лицензия)
-  *  [Контакты](#Контакты)
-
-## 🎯 
-## Описание
-
-### Joke Kafka Producer — это Spring Boot приложение, которое:
-
- *   Получает случайные шутки из публичного API official-joke-api
-
- *   Отправляет их в топик Kafka jokes-topic с подтверждением доставки (acks=all)
-
- *   Работает в двух режимах:
-
-      *  Ручной — по REST-запросу
-
-      *  Автоматический — по расписанию (каждые 10 секунд)
-
-## 🏗 
-## Архитектура     
-<img width="2452" height="2880" alt="deepseek_mermaid_20260908_38ce5f" src="https://github.com/user-attachments/assets/b8b21495-7dda-44c1-9bee-4a18cd70acc5" />
-
-## Диаграмма последовательности (Sequence Diagram)
-<img width="5731" height="3283" alt="deepseek_mermaid_20260908_ccdb23" src="https://github.com/user-attachments/assets/701a0737-2266-4067-b83e-58889ceb5baa" />
-
-## 🛠 
-## Стек технологий
-
-|Компонент|	Технология|
-|--------------------|--------------------------|
-|Язык|	Java 19|
-|Фреймворк|	Spring Boot 4.0.3|
-|Reactive|	Spring WebFlux + Project Reactor|
-|Kafka	|Apache Kafka (Spring Kafka)|
-|Сериализация	|Jackson JSON|
-|HTTP Client	|WebClient (Reactive)|
-|Сборка	|Maven|
-|Lombok|	Для сокращения кода|
-
-## 📦 
-## Требования
-
-* Java 19 или выше
-
-* Apache Kafka (локально или удалённо)
-
-* Maven 3.8+
-
-* Интернет (для доступа к API шуток)
+<img width="2436" height="2879" alt="deepseek_mermaid_20260908_b86474" src="https://github.com/user-attachments/assets/0016ef1d-2408-4ed7-be3a-8e22121b8b94" />
 
 
-## 🚀 
-## Установка и запуск
+## Sequence Diagram
 
-### 1. Клонирование репозитория
+<img width="5731" height="3283" alt="deepseek_mermaid_20260908_ccdb23" src="https://github.com/user-attachments/assets/b85daa83-3118-423c-9b41-b13e8ba6dafc" />
+
+
+## 🛠 Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| Language | Java 19 |
+| Framework | Spring Boot 4.0.3 |
+| Reactive | Spring WebFlux + Project Reactor |
+| Kafka | Apache Kafka (Spring Kafka) |
+| Serialization | Jackson JSON |
+| HTTP Client | WebClient (Reactive) |
+| Build Tool | Maven |
+| Utilities | Lombok |
+
+## 📦 Requirements
+
+- Java 19 or higher
+- Apache Kafka (local or remote)
+- Maven 3.8+
+- Internet connection (to access the joke API)
+
+## 🚀 Installation & Running
+
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourname/joke-kafka-producer.git
 cd joke-kafka-producer
 ```
-### 2. Запуск Kafka (локально)
 
-#### Вариант A: Через Docker Compose
+### 2. Start Kafka (locally)
+
+#### Option A: Using Docker Compose
 ```bach
 # docker-compose.yml
 version: '3'
@@ -123,33 +108,33 @@ services:
       - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
       - KAFKA_LOG_DIRS=/tmp/kraft-combined-logs
 ```
-### Запуск:
+### Start:
 ```bach
 docker-compose up -d
 ```
-#### Вариант B: Через установленный Kafka
+#### Option B: Using an existing Kafka installation
 ```bach
-# Запуск брокера (KRaft mode)
+# Start broker (KRaft mode)
 bin/kafka-server-start.sh config/kraft/server.properties
 ```
-### 3. Сборка и запуск приложения
+### 3. Build and run the application
 ```bach
-# Сборка
+# Build
 mvn clean package
 
-# Запуск
+# Run
 mvn spring-boot:run
 ```
-#### Или через JAR:
+#### Or via JAR:
 ```bach
 java -jar target/joke-kafka-producer-0.0.1-SNAPSHOT.jar
 ```
 ## ⚙️ 
-## Конфигурация
+## Configuration
 ### application.properties
 ```bach
 #properties
-# Приложение
+# Application
 spring.application.name=joke-kafka-producer
 
 # Kafka
@@ -157,34 +142,34 @@ spring.kafka.bootstrap-servers=localhost:9092
 spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
 spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JacksonJsonSerializer
 
-# Топик
+# Topic
 joke.kafka.topic=jokes-topic
 
-# Scheduler (мс)
+# Scheduler (ms)
 joke.scheduler.fixed-rate=10000
 
-# Логирование
+# Logging
 logging.level.com.example.jokekafkaproducer=DEBUG
 ```
-### Настройки Kafka в коде (KafkaConfig.java)
-|Параметр	|Значение	|Описание|
-|---------|---------|-------------|
-|acks	|all|	Подтверждение от всех реплик|
-|retries|	3	|Количество попыток при ошибке|
-|partitions	|1|	Количество партиций топика|
-|replicas	|1|	Количество реплик|
+### Kafka settings in code (KafkaConfig.java)
+|Parameter|	Value	|Description|
+|--------|----------------|------------------|
+|acks|	all|	Acknowledgment from all replicas|
+|retries|	3|Number of retry attempts on error|
+|partitions|	1	|Number of topic partitions|
+|replicas	|1|	Number of replicas|
 
 ## 🔌 
 ## API Endpoints
 ### POST /api/joke/fetch-and-send
 
-#### Получить случайную шутку из API и отправить в Kafka.
+#### Fetch a random joke from the API and send it to Kafka.
 
-### Ответ:
+### Response:
 ```bach
 {
   "success": true,
-  "message": "Шутка успешно записана в Kafka (подтверждено брокером)",
+  "message": "Joke successfully written to Kafka (acknowledged by broker)",
   "jokeId": 123,
   "jokeSetup": "Why don't scientists trust atoms?",
   "jokePunchline": "Because they make up everything!",
@@ -195,42 +180,42 @@ logging.level.com.example.jokekafkaproducer=DEBUG
   "sendDurationMs": 145
 }
 ```
-## Диагностические эндпоинты (TestController)
+## Diagnostic endpoints (TestController)
 
-|Метод	|URL	|Описание|
-|--------------|------------|-----------------|
-GET|	/api/test/simple|	Проверка работы контроллера|
-GET|	/api/test/diagnostic	|Простая диагностика|
-GET|	/api/test/full-diagnostic|	Полная диагностика (API + Kafka)|
-GET|	/api/test/check-api	|Проверка только API|
-POST|	/api/test/check-kafka|	Проверка только Kafka (с тестовой шуткой)|
-POST|	/api/test/full-cycle	|Полный цикл (API → Kafka)|
-GET|	/api/test/kafka-test-simple|	Проверка создания Kafka producer|
-GET|	/simple-ping	|Простейший тест|
+|Method|	URL|	Description|
+|--------------|---------------|----------------------|
+GET|	/api/test/simple	|Check if controller is working|
+GET	|/api/test/diagnostic	|Simple diagnostic check|
+GET|	/api/test/full-diagnostic|	Full diagnostic (API + Kafka)|
+GET	|/api/test/check-api	|Check only API|
+POST|	/api/test/check-kafka|	Check only Kafka (with test joke)|
+POST|	/api/test/full-cycle|	Full cycle (API → Kafka)|
+GET|	/api/test/kafka-test-simple|	Check Kafka producer creation|
+GET|	/simple-ping|	Simplest ping test|
 
 ## 📊 
-## Мониторинг и диагностика
-### Примеры запросов
+## Monitoring & Diagnostics
+### Example requests
 
-#### Проверка API:
+#### Check API:
 ```bach
 curl -X GET http://localhost:8080/api/test/check-api
 ```
-#### Проверка Kafka:
+#### Check Kafka:
 ```bach
 curl -X POST http://localhost:8080/api/test/check-kafka
 ```
-#### Полный диагностический отчет:
+#### Full diagnostic report:
 
 ```bach
 curl -X GET http://localhost:8080/api/test/full-diagnostic
 ```
-#### Получение и отправка шутки:
+#### Fetch and send a joke:
 ```bach
 curl -X POST http://localhost:8080/api/joke/fetch-and-send
 ```
 ## 📁
-## Структура проекта
+##  Project Structure
 
 ```bach
 joke-kafka-producer/
@@ -238,49 +223,49 @@ joke-kafka-producer/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/example/jokekafkaproducer/
-│   │   │       ├── JokeKafkaProducerApplication.java   # Точка входа
+│   │   │       ├── JokeKafkaProducerApplication.java   # Entry point
 │   │   │       ├── config/
-│   │   │       │   └── KafkaConfig.java                # Настройки Kafka
+│   │   │       │   └── KafkaConfig.java                # Kafka configuration
 │   │   │       ├── controller/
-│   │   │       │   ├── JokeController.java             # Основной REST API
-│   │   │       │   ├── TestController.java             # Диагностика
-│   │   │       │   └── SimpleController.java           # Простой тест
+│   │   │       │   ├── JokeController.java             # Main REST API
+│   │   │       │   ├── TestController.java             # Diagnostics
+│   │   │       │   └── SimpleController.java           # Simple test
 │   │   │       ├── dto/
-│   │   │       │   └── KafkaSendResultDto.java         # DTO ответа
+│   │   │       │   └── KafkaSendResultDto.java         # Response DTO
 │   │   │       ├── model/
-│   │   │       │   └── Joke.java                       # Модель шутки
+│   │   │       │   └── Joke.java                       # Joke model
 │   │   │       └── service/
-│   │   │           ├── JokeApiService.java             # HTTP клиент к API
-│   │   │           ├── JokeKafkaProducerService.java   # Отправка в Kafka
-│   │   │           └── ScheduledJokeService.java       # Планировщик
+│   │   │           ├── JokeApiService.java             # HTTP client to API
+│   │   │           ├── JokeKafkaProducerService.java   # Kafka sender
+│   │   │           └── ScheduledJokeService.java       # Scheduler
 │   │   └── resources/
-│   │       ├── application.properties                  # Конфигурация
-│   │       ├── static/                                 # Статика
-│   │       └── templates/                              # Шаблоны
-│   └── test/                                           # Тесты
-├── pom.xml                                             # Maven зависимости
+│   │       ├── application.properties                  # Configuration
+│   │       ├── static/                                 # Static files
+│   │       └── templates/                              # Templates
+│   └── test/                                           # Tests
+├── pom.xml                                             # Maven dependencies
 ├── .gitignore
 └── README.md
 ```
 
 ## 🗺
-## Планы по развитию
-□ Добавить Consumer для чтения шуток из Kafka
-□ Добавить Swagger/OpenAPI документацию
-□ Настроить Prometheus + Grafana для метрик
-□ Добавить кэширование шуток (Redis)
-□ Написать интеграционные тесты с Testcontainers
-□ Добавить обработку ошибок с Dead Letter Topic (DLT)
+## Roadmap
+□ Add Consumer for reading jokes from Kafka
+□ Add Swagger/OpenAPI documentation
+□ Set up Prometheus + Grafana for metrics
+□ Add caching for jokes (Redis)
+□ Write integration tests with Testcontainers
+□ Add error handling with Dead Letter Topic (DLT)
 
 
 ## 📝 
-## Лицензия
+##  License
 
-#### Проект распространяется под лицензией MIT.
+#### This project is distributed under the MIT License.
 
 
 ## 📞
-### Контакты
+### Contacts
 * Contact Sergey Chekryzhov
 * Email sergeyh510@gmail.com
 * GitHub sergeyh510-alt
@@ -288,9 +273,10 @@ joke-kafka-producer/
 * LinkedIn: www.linkedin.com/in/sergey-chekryzhov-a38778217
 * Telegram: @SergeyChekryzhov
 
-## ⭐ Поддержка
+## ⭐ Support
 
-#### Если проект оказался полезным — поставь ⭐ на GitHub!
+#### If you find this project useful — give it a ⭐ on GitHub!
 
-* | Примечание: Для работы приложения требуется запущенный Kafka брокер. 
-* | Используйте Docker Compose из раздела Установка и запуск.
+#### Note: 
+A running Kafka broker is required for the application to work. 
+Use Docker Compose from the Installation & Running section.
