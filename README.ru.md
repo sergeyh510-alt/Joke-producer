@@ -286,10 +286,10 @@ joke-kafka-producer/
 
 ## 📞
 ### Контакты
-* Contact Sergey Chekryzhov
-* Email sergeyh510@gmail.com
-* GitHub sergeyh510-alt
-* Project Joke-producer
+* Contact: Sergey Chekryzhov
+* Email; sergeyh510@gmail.com
+* GitHub: sergeyh510-alt
+* Project: Joke-producer
 * LinkedIn: www.linkedin.com/in/sergey-chekryzhov-a38778217
 * Telegram: @SergeyChekryzhov
 
